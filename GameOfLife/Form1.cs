@@ -36,7 +36,7 @@ namespace GameOfLife
                 (
                     rows: pictureBox1.Height / resolution, 
                     columns: pictureBox1.Width / resolution, 
-                    (int)nudDensity.Value
+                    density: (int)nudDensity.Minimum + (int)nudDensity.Maximum - (int)nudDensity.Value
                 );
 
             Text = $"Generation {gameEngine.currentGeneration}";
@@ -60,14 +60,10 @@ namespace GameOfLife
                 }
             }
 
-            
-
             pictureBox1.Refresh();//тут картинка оновлюється повністю
             Text = $"Generation {gameEngine.currentGeneration}";
             gameEngine.nextGeneration();
         }
-
-        
 
         private void StopGame()
         {
@@ -77,8 +73,6 @@ namespace GameOfLife
             nudResolution.Enabled = true;
             nudDensity.Enabled = true;
         }
-
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -98,34 +92,22 @@ namespace GameOfLife
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            //if (!timer1.Enabled)
-            //    return;
+            if (!timer1.Enabled)
+                return;
 
-            //if (e.Button == MouseButtons.Left)
-            //{
-            //    var x = e.Location.X / resolution;
-            //    var y = e.Location.Y / resolution;
-            //    if (ValidateMousePosition(x, y))
-            //        field[x, y] = true;
-            //}
+            if (e.Button == MouseButtons.Left)
+            {
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+                gameEngine.AddCell(x, y);
+            }
 
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    var x = e.Location.X / resolution;
-            //    var y = e.Location.Y / resolution;
-            //    if (ValidateMousePosition(x, y))
-            //        field[x, y] = false;
-            //}
+            if (e.Button == MouseButtons.Right)
+            {
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+                gameEngine.DeleteCell(x, y);
+            }
         }
-        //private bool ValidateMousePosition(int x, int y)
-        //{
-        //    return x >= 0 && y >= 0 && x < columns && y < rows;
-        //}
-
-        private void Form1_load(object sender, EventArgs e)
-        {
-            //Text = $"Generation {gameEngine.currentGeneration}";
-        }
-
     }
 }

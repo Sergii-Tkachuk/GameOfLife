@@ -12,14 +12,13 @@ namespace GameOfLife
         private bool[,] field;       //поле станів клітинок
         private readonly int rows;   //кількість рядків поля
         private readonly int columns;//кількість колонок поля
-        private Random random = new Random();
-
 
         public GameEngine(int rows, int columns, int density)
         {
             this.rows = rows;
             this.columns = columns;
             field = new bool [columns, rows];
+            Random random = new Random();
 
             //генерація першого покоління клітинок
             for (int x = 0; x < columns; x++)
@@ -92,6 +91,27 @@ namespace GameOfLife
                 }
             }
             return count;
+        }
+
+        private bool ValidateCellPosition(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < columns && y < rows;
+        }
+
+        private void UpdateCell(int x, int y, bool state)
+        {
+            if (ValidateCellPosition(x, y))
+                field[x, y] = state;
+        }
+
+        public void AddCell(int x, int y)
+        {
+            UpdateCell(x, y, true);
+        }
+
+        public void DeleteCell(int x, int y)
+        {
+            UpdateCell(x, y, false);
         }
     }
 }
