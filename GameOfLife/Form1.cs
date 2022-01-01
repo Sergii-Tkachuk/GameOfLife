@@ -79,7 +79,7 @@ namespace GameOfLife
                         newField[x, y] = field[x, y];
 
                     if(hasLife)
-                        graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution, resolution);
+                        graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution - 1, resolution - 1);
                 }
             }
             field = newField;
