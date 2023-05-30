@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bContinue_Click = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.bContinue_Click);
             this.splitContainer1.Panel1.Controls.Add(this.bStop);
             this.splitContainer1.Panel1.Controls.Add(this.nudDensity);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
@@ -68,7 +70,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
+            this.splitContainer1.Size = new System.Drawing.Size(929, 450);
             this.splitContainer1.SplitterDistance = 195;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -165,7 +167,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(597, 446);
+            this.pictureBox1.Size = new System.Drawing.Size(726, 446);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
@@ -175,11 +177,21 @@
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // bContinue_Click
+            // 
+            this.bContinue_Click.Location = new System.Drawing.Point(45, 258);
+            this.bContinue_Click.Name = "bContinue_Click";
+            this.bContinue_Click.Size = new System.Drawing.Size(119, 34);
+            this.bContinue_Click.TabIndex = 1;
+            this.bContinue_Click.Text = "Continue";
+            this.bContinue_Click.UseVisualStyleBackColor = true;
+            this.bContinue_Click.Click += new System.EventHandler(this.bContinue_Click_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(929, 450);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "GameOfLife";
@@ -207,6 +219,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button bContinue_Click;
     }
 }
 
